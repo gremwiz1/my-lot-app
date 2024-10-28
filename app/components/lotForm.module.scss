@@ -1,0 +1,291 @@
+.headerTitle {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.headerSubtitle {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: left;
+    color: #141414;
+    max-width: 130px;
+    margin-right: 110px;
+    min-width: 130px;
+}
+
+.formElement {
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.radioButton {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: #000000;
+    }
+
+    &.active {
+        background-color: #1890ff;
+        color: #ffffff;
+
+        &:hover {
+            color: #ffffff;
+        }
+    }
+}
+
+.sizeAuction {
+    width: 91px;
+}
+
+.sizeAnnouncement {
+    width: 117px;
+}
+
+.radioButtons {
+    display: flex;
+}
+
+.ant-form-item-label>label {
+    display: flex;
+    justify-content: flex-start;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+    color: #8C8C8C;
+}
+
+.categorySelect {
+    width: 300px !important;
+    height: 40px;
+    margin-right: 32px !important;
+
+    // Стили для placeholder (псевдо-элемент внутри select)
+    .ant-select-selection-placeholder {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.additionalCategorySelect {
+    width: 300px !important;
+    height: 40px;
+
+    // Стили для placeholder (псевдо-элемент внутри select)
+    .ant-select-selection-placeholder {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+.formGroupColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.formItemLabelWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+    color: #8C8C8C;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.formItemLabelTitle {
+    display: flex;
+    align-items: center;
+
+    .requiredMark {
+        color: red;
+    }
+}
+
+.inputLarge {
+    width: 632px;
+    height: 40px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000D9;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+}
+
+.formRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .ant-form-item {
+        flex: 1;
+        margin-right: 32px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.formItemCondition {
+    label {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        text-align: left;
+        color: #8C8C8C;
+    }
+}
+
+.radioButtonCondition {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    &.active {
+        color: #1890ff;
+        border-color: #1890ff;
+    }
+
+    &.inactive {
+        color: #000000d9;
+        border-color: #d9d9d9;
+    }
+
+    &:hover {
+        color: inherit;
+        border-color: inherit;
+    }
+}
+
+.manufacturer {
+    height: 40px;
+    width: 218px !important;
+    border-radius: 2px 0px 0px 0px;
+    border: 1px solid #d9d9d9;
+}
+
+.selectScale {
+    width: 110px !important;
+    height: 40px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px 0 0 0;
+}
+
+.selectMaterial {
+    width: 490px !important;
+    height: 40px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px 0 0 0;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #000000d9;
+}
+
+.descriptionInput {
+    width: 632px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px 0 0 0;
+}
+
+.buttonSubmit {
+    width: 157px;
+    height: 40px;
+    border-radius: 2px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    background-color: #1890FF;
+    color: #FFFFFF;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    margin-left: 240px;
+}
+
+.categoryOption {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #000000d9;
+}
+
+.inputArticle {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #000000d9;
+}
+
+.customLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  
+    span {
+      &:first-child {
+        flex-grow: 1;  
+      }
+  
+      &.requiredMark {
+        color: red;
+      }
+  
+      &.charCounter {
+        margin-left: auto;
+      }
+    }
+  }
+  
+  
+  
+    
