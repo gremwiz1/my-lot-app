@@ -1,3 +1,4 @@
+// lotSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Lot {
@@ -9,6 +10,8 @@ interface Lot {
   scale: string;
   material: string;
   description: string;
+  createdAt: string; 
+  type: "announcement" | "auction"; 
 }
 
 interface LotState {
@@ -23,8 +26,8 @@ const lotSlice = createSlice({
   name: 'lot',
   initialState,
   reducers: {
-    addLot: (state, action: PayloadAction<Lot>) => {
-      state.lots.push({ ...action.payload, id: new Date().toISOString() });
+    addLot: (state, action: PayloadAction<Omit<Lot, 'id' | 'createdAt'>>) => {
+      state.lots.push({ ...action.payload, id: new Date().toISOString(), createdAt: new Date().toISOString() });
     },
     removeLot: (state, action: PayloadAction<string>) => {
       state.lots = state.lots.filter(lot => lot.id !== action.payload);

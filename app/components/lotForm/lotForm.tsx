@@ -2,45 +2,23 @@
 
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addLot } from "../store/lotSlice";
-import { Button, Form, Input, Select, Card, Radio } from "antd";
+import { addLot } from "../../store/lotSlice";
+import { Button, Form, Input, Select, Radio } from "antd";
 import styles from "./lotForm.module.scss";
+import { categories } from "@/app/data/categories";
 
 const { Option, OptGroup } = Select;
 
-const categories = [
-  {
-    label: "Масштабные модели",
-    value: "scale-models",
-    children: [
-      { label: "Автомобили", value: "cars" },
-      { label: "Корабли", value: "ships" },
-    ],
-  },
-  {
-    label: "Отечественные автомобили",
-    value: "domestic-cars",
-    children: null,
-  },
-  {
-    label: "Тракторы, строительная техника",
-    value: "tractors-construction",
-    children: [
-      { label: "Экскаваторы", value: "excavators" },
-      { label: "Погрузчики", value: "loaders" },
-    ],
-  },
-];
-
-const LotForm: React.FC = () => {
+const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const [condition, setCondition] = useState("new");
   const [publicationType, setPublicationType] = useState("announcement");
 
   const handleSubmit = (values: any) => {
-    dispatch(addLot(values));
+    dispatch(addLot({ ...values, type: publicationType }));
     form.resetFields();
+    onCreateLot();
   };
 
   const labelRef = React.useRef<HTMLDivElement>(null);
@@ -55,7 +33,7 @@ const LotForm: React.FC = () => {
 
   return (
     <div style={{ padding: "16px" }}>
-      <Card bordered={false} style={{ maxWidth: "1000px", margin: "0 auto" }}>
+      <section>
         <h2 className={styles.headerTitle}>Создание лота</h2>
 
         {/* Тип публикации */}
@@ -366,7 +344,7 @@ const LotForm: React.FC = () => {
             </Button>
           </Form.Item>
         </Form>
-      </Card>
+      </section>
     </div>
   );
 };
