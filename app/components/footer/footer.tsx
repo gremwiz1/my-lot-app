@@ -2,11 +2,10 @@
 
 import React from "react";
 import styles from "./footer.module.scss";
-import { useRouter } from "next/router";
 
 const Footer: React.FC = () => {
   
-  const { basePath } = useRouter(); 
+  const basePath = '/my-lot-app'
   return (
     <footer className={styles.footer}>
         <div className={styles.brand}>
