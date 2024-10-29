@@ -1,17 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./footer.module.scss";
 import { useRouter } from "next/router";
 
 const Footer: React.FC = () => {
   
-  const [basePath, setBasePath] = useState("");
-
-  useEffect(() => {
-    const { basePath: path } = useRouter();
-    setBasePath(path);
-  }, []);
+  const { basePath } = useRouter(); 
   return (
     <footer className={styles.footer}>
         <div className={styles.brand}>
