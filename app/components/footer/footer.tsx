@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./footer.module.scss";
+import { useRouter } from "next/router";
 
 const Footer: React.FC = () => {
+  const { basePath } = useRouter();
+
   return (
     <footer className={styles.footer}>
         <div className={styles.brand}>
         <img
-              src="/images/brand.png"
+              src={`${basePath}/images/brand.png`}
               alt="Logo"
             />
         </div>
@@ -29,17 +32,17 @@ const Footer: React.FC = () => {
         <div className={styles.right}>
           <div className={styles.socialIcons}>
             <img
-              src="/images/logotip.png"
+              src={`${basePath}/images/logotip.png`}
               alt="Logo RC Forum"
               className={styles.logotip}
             />
-            <img src="/images/vk.png" alt="VK" className={styles.socialIcon} />
+            <img src={`${basePath}/images/vk.png`} alt="VK" className={styles.socialIcon} />
           </div>
         </div>
       </div>
       <div className={styles.footerBottom}>
       <img
-              src="/images/metrika.png"
+              src={`${basePath}/images/metrika.png`}
               alt="Metrika"
               className={styles.metrika}
             />
