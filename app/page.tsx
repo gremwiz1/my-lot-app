@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import LotList from './components/lotList/lotList';
 import LotForm from './components/lotForm/lotForm';
-import Footer from './components/footer/footer';
+
+const Footer = dynamic(() => import('./components/footer/footer'), { ssr: false });
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState('LotForm');
