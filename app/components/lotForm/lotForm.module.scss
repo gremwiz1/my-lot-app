@@ -52,14 +52,6 @@
     }
 }
 
-.sizeAuction {
-    width: 91px;
-}
-
-.sizeAnnouncement {
-    width: 117px;
-}
-
 .radioButtons {
     display: flex;
 }
@@ -73,37 +65,6 @@
     line-height: 22px;
     text-align: left;
     color: #8C8C8C;
-}
-
-.categorySelect {
-    width: 300px !important;
-    height: 40px;
-    margin-right: 32px !important;
-
-    // Стили для placeholder (псевдо-элемент внутри select)
-    .ant-select-selection-placeholder {
-        font-family: 'PT Sans', sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left;
-        color: rgba(0, 0, 0, 0.25);
-    }
-}
-
-.additionalCategorySelect {
-    width: 300px !important;
-    height: 40px;
-
-    // Стили для placeholder (псевдо-элемент внутри select)
-    .ant-select-selection-placeholder {
-        font-family: 'PT Sans', sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        text-align: left;
-        color: rgba(0, 0, 0, 0.25);
-    }
 }
 
 .formGroupColumn {
@@ -245,15 +206,6 @@
     line-height: 24px;
     text-align: center;
     margin-left: 240px;
-}
-
-.categoryOption {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    color: #000000d9;
 }
 
 .inputArticle {

@@ -5,9 +5,11 @@ import { useDispatch } from "react-redux";
 import { addLot } from "../../store/lotSlice";
 import { Button, Form, Input, Select, Radio } from "antd";
 import styles from "./lotForm.module.scss";
-import { categories } from "@/app/data/categories";
-
-const { Option, OptGroup } = Select;
+import PublicationTypeSelect from "../publicationTypeSelect/publicationTypeSelect";
+import CategorySelect from "../categprySelect/categorySelect";
+import { manufacturers } from "@/app/data/manufacturers";
+import { scales } from "@/app/data/scales";
+import { materials } from "@/app/data/materials";
 
 const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
   const dispatch = useDispatch();
@@ -45,125 +47,16 @@ const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
         >
           <div className={styles.formElement}>
             <h3 className={styles.headerSubtitle}>Тип публикации</h3>
-            <Form.Item>
-              <Radio.Group
-                value={publicationType}
-                onChange={(e) => setPublicationType(e.target.value)}
-                className={styles.radioButtons}
-              >
-                <Radio.Button
-                  value="auction"
-                  className={`${styles.radioButton} ${styles.sizeAuction} ${
-                    publicationType === "auction" ? styles.active : ""
-                  }`}
-                >
-                  Аукцион
-                </Radio.Button>
-                <Radio.Button
-                  value="announcement"
-                  className={`${styles.radioButton} ${
-                    styles.sizeAnnouncement
-                  } ${publicationType === "announcement" ? styles.active : ""}`}
-                >
-                  Объявление
-                </Radio.Button>
-              </Radio.Group>
-            </Form.Item>
+            <PublicationTypeSelect
+              publicationType={publicationType}
+              onChange={setPublicationType}
+            />
           </div>
 
           {/* Категории */}
           <div className={styles.formElement}>
             <h3 className={styles.headerSubtitle}>Категория</h3>
-            <Form.Item label="Категория" required noStyle>
-              <Input.Group compact>
-                <Form.Item
-                  name="category"
-                  label={
-                    <span>
-                      Категория<span style={{ color: "red" }}>*</span>
-                    </span>
-                  }
-                  rules={[
-                    {
-                      message: "Пожалуйста, выберите категорию",
-                      required: true,
-                    },
-                  ]}
-                >
-                  <Select
-                    placeholder="Выберите категорию"
-                    className={styles.categorySelect}
-                    dropdownClassName={styles.categoryDropdown}
-                  >
-                    {categories.map((cat) =>
-                      cat.children ? (
-                        <OptGroup
-                          key={cat.value}
-                          label={cat.label}
-                          className={styles.categoryOption}
-                        >
-                          {cat.children.map((child) => (
-                            <Option
-                              key={child.value}
-                              value={child.value}
-                              className={styles.categoryOption}
-                            >
-                              {child.label}
-                            </Option>
-                          ))}
-                        </OptGroup>
-                      ) : (
-                        <Option
-                          key={cat.value}
-                          value={cat.value}
-                          className={styles.categoryOption}
-                        >
-                          {cat.label}
-                        </Option>
-                      )
-                    )}
-                  </Select>
-                </Form.Item>
-                <Form.Item
-                  name="additionalCategory"
-                  label="Дополнительная категория"
-                >
-                  <Select
-                    placeholder="Выберите категорию"
-                    className={styles.additionalCategorySelect}
-                    dropdownClassName={styles.categoryDropdown}
-                  >
-                    {categories.map((cat) =>
-                      cat.children ? (
-                        <OptGroup
-                          key={cat.value}
-                          label={cat.label}
-                          className={styles.categoryOption}
-                        >
-                          {cat.children.map((child) => (
-                            <Option
-                              key={child.value}
-                              value={child.value}
-                              className={styles.categoryOption}
-                            >
-                              {child.label}
-                            </Option>
-                          ))}
-                        </OptGroup>
-                      ) : (
-                        <Option
-                          key={cat.value}
-                          value={cat.value}
-                          className={styles.categoryOption}
-                        >
-                          {cat.label}
-                        </Option>
-                      )
-                    )}
-                  </Select>
-                </Form.Item>
-              </Input.Group>
-            </Form.Item>
+            <CategorySelect />
           </div>
 
           {/* Описание публикации */}
@@ -173,14 +66,14 @@ const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
               <Form.Item
                 name="name"
                 label={
-                  <div
-                    className={styles.customLabel}
-                    ref={labelRef}
-                  >
+                  <div className={styles.customLabel} ref={labelRef}>
                     <span>
-                      Название лота<span className={styles.requiredMark}>*</span>
+                      Название лота
+                      <span className={styles.requiredMark}>*</span>
                     </span>
-                    <span className={styles.charCounter} ref={charCounterRef}>0/100</span>
+                    <span className={styles.charCounter} ref={charCounterRef}>
+                      0/100
+                    </span>
                   </div>
                 }
                 rules={[
@@ -242,30 +135,26 @@ const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
                     </Radio.Button>
                   </Radio.Group>
                 </Form.Item>
-
                 <Form.Item
                   name="manufacturer"
                   label="Производитель"
                   rules={[
-                    {
-                      message: "Выберите производителя",
-                      required: true,
-                    },
+                    { message: "Выберите производителя", required: true },
                   ]}
                 >
                   <Select
-                    className={styles.manufacturer}
                     placeholder="Выберите производителя"
+                    className={styles.manufacturer}
                   >
-                    <Option className={styles.categoryOption} value="Bosch">
-                      Bosch
-                    </Option>
-                    <Option className={styles.categoryOption} value="LG">
-                      LG
-                    </Option>
-                    <Option className={styles.categoryOption} value="AEG">
-                      AEG
-                    </Option>
+                    {manufacturers.map((item) => (
+                      <Select.Option
+                        key={item.value}
+                        value={item.value}
+                        className={styles.categoryOption}
+                      >
+                        {item.label}
+                      </Select.Option>
+                    ))}
                   </Select>
                 </Form.Item>
               </div>
@@ -273,27 +162,21 @@ const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
                 <Form.Item
                   name="scale"
                   label="Масштаб"
-                  className={styles.formItem}
-                  rules={[
-                    {
-                      message: "Нужен масштаб",
-                      required: true,
-                    },
-                  ]}
+                  rules={[{ message: "Нужен масштаб", required: true }]}
                 >
-                  <Select className={styles.selectScale}>
-                    <Option className={styles.categoryOption} value="1:18">
-                      1:18
-                    </Option>
-                    <Option className={styles.categoryOption} value="1:24">
-                      1:24
-                    </Option>
-                    <Option className={styles.categoryOption} value="1:32">
-                      1:32
-                    </Option>
-                    <Option className={styles.categoryOption} value="1:64">
-                      1:64
-                    </Option>
+                  <Select
+                    placeholder="Выберите масштаб"
+                    className={styles.selectScale}
+                  >
+                    {scales.map((item) => (
+                      <Select.Option
+                        key={item.value}
+                        value={item.value}
+                        className={styles.categoryOption}
+                      >
+                        {item.label}
+                      </Select.Option>
+                    ))}
                   </Select>
                 </Form.Item>
                 <Form.Item name="material" label="Материал">
@@ -301,18 +184,15 @@ const LotForm: React.FC<{ onCreateLot: () => void }> = ({ onCreateLot }) => {
                     placeholder="Выберите материал"
                     className={styles.selectMaterial}
                   >
-                    <Option className={styles.categoryOption} value="plastic">
-                      Пластик
-                    </Option>
-                    <Option className={styles.categoryOption} value="metal">
-                      Металл
-                    </Option>
-                    <Option className={styles.categoryOption} value="wood">
-                      Дерево
-                    </Option>
-                    <Option className={styles.categoryOption} value="composite">
-                      Композит
-                    </Option>
+                    {materials.map((item) => (
+                      <Select.Option
+                        key={item.value}
+                        value={item.value}
+                        className={styles.categoryOption}
+                      >
+                        {item.label}
+                      </Select.Option>
+                    ))}
                   </Select>
                 </Form.Item>
               </div>
